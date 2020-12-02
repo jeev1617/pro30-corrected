@@ -1,7 +1,7 @@
 class Box {
     constructor(x, y, width, height) {
       var options = {
-          'restitution':0,
+          'restitution':0.3,
           'friction':1,
           'density':2.0,
       }
@@ -11,6 +11,7 @@ class Box {
      // this.body.position.x=x;
       //this.body.position.y=y;
       World.add(world, this.body);
+      this.Visiblity=255;
     }
     display(){
      
@@ -21,16 +22,16 @@ class Box {
       translate(pos.x, pos.y);
       rotate(angle);
       rectMode(CENTER);
-      fill("red");
+      fill(rgb(random(0,255),random(0,255),random(0,255)));
       rect(0,0, this.width, this.height);
       pop();
       }
       else{
         this.Visiblity = this.Visiblity-1;
-        World.remove(world, this.body);
         push();
+        World.remove(world, this.body);
         tint(255,this.Visiblity);
-        rect(this.body.position.x,this.body.position.y ,this.width, this.height);
+        rect(0,0 ,this.width, this.height);
         pop();
       }
     }

@@ -4,7 +4,7 @@ class Launcher{
             bodyA: bodyA,
             pointB: pointB
         }
-        this.launcher= Matter.Constraint.create(options);
+        this.launcher=Constraint.create(options);
       this.pointB=pointB;
         World.add(world, this.launcher);
     }
@@ -23,6 +23,7 @@ class Launcher{
             var pointB = this.pointB;
 
         strokeWeight(4);
+        stroke("purple")
         line(pointA.x, pointA.y, pointB.x, pointB.y);
 }
     }

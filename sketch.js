@@ -1,8 +1,8 @@
-
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
+const Constraint = Matter.Constraint;
 
 var box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,box17,box18,box19;
 var stand1;
@@ -14,7 +14,7 @@ function preload()
 }
 
 function setup() {
-	createCanvas(800, 700);
+	createCanvas(800, 600);
 
 	engine = Engine.create();
 	world = engine.world;
@@ -42,18 +42,19 @@ box17=new Box(415,430,30,30);
 box18=new Box(385,430,30,30);
 box19=new Box(400,400,30,30);
 
-polygon1=new Polygon(50,200);
-launcher=new Launcher(polygon1.body,{x:50,y:200});
-Engine.run(engine);
+polygon1=new Polygon(200,400);
+launcher=new Launcher(polygon1.body,{x:150,y:450});
+
   
 }
 
 
 function draw() {
   rectMode(CENTER);
-  background(255);
+  Engine.update(engine);
+  background("skyblue");
 
-  stand1.display();
+stand1.display();
 box1.display();  
 box2.display(); 
 box3.display(); 
@@ -86,6 +87,6 @@ function mouseReleased(){
 }
 function keyPressed(){
   if(keyCode === 32){
-      launcher.attach(stone1.body);
+      launcher.attach(polygon1.body);
   }
 }
